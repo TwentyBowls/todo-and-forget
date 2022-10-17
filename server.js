@@ -29,6 +29,6 @@ app.use(express.json())
 
 // routes
 app.use('/', mainRoutes)
-
+app.use('/todos', todoRoutes)
 
 app.listen(PORT, console.log(`Server running on port ${PORT}.`))
