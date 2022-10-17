@@ -15,27 +15,20 @@
 //     "validator": "^13.6.0"
 //   }
 
+// importing
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 2000
-const morgan = require('morgan')
-const router = express.Router
+const mainRoutes = require('./routes/main')
+const todoRoutes = require('./routes/todos')
 
 // middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(router)
 
 // routes
-// router.get('/', (req, res) => {
-//     console.log('router working')
-//     res.end()
-// })
+app.use('/', mainRoutes)
 
-app.get('/', (req, res) => {
-    console.log('We got got.')
-    res.send('Main Page')
-})
 
 app.listen(PORT, console.log(`Server running on port ${PORT}.`))
